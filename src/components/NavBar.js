@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
+import CartWidget from './CartWidget'
 
-const NavBar = ({children}) => {
+const NavBar = () => {
 
   return (
   <div className="navbar bg-base-100"><font></font>
@@ -21,7 +22,7 @@ const NavBar = ({children}) => {
       <a className="btn btn-ghost normal-case text-xl">G A R D E N I A</a><font></font>
     </div><font></font>
     <div className="navbar-end"><font></font>
-        {children}
+        <CartWidget/>
       <button className="btn btn-ghost btn-circle">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg><font></font>
       </button><font></font>
