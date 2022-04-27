@@ -23,9 +23,9 @@ return (
     <>
     <div className="items-stretch">
 
-        <button class="btn btn-xs" onClick={resHandler}> - </button>
-        <strong class="bg-green-300"> {suma} </strong>
-        <button class="btn btn-xs" onClick={addHandler}> + </button>
+        <button className="btn btn-xs" onClick={resHandler}> - </button>
+        <strong className=""> {suma} </strong>
+        <button className="btn btn-xs" onClick={addHandler}> + </button>
     </div>
     </>
   )

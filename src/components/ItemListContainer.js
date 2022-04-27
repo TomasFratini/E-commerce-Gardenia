@@ -1,16 +1,14 @@
-import ItemCount from "./ItemCount"
+import ItemList from "./ItemList"
 
-function ItemListContainer({name, description}) {
+
+function ItemListContainer() {
   return (
         
-            <div class="card w-96 h-48 bg-green-300 shadow-xl flex space-x-4 ">
-                <div class="card-body">
-                    <h2 class="card-title">{name}!</h2>
-                    <p>{description}</p>
-                  <ItemCount/>
-                </div>
-                {/* <figure><img src="#" alt="Shoes" /></figure> */}
-            </div>
+      <div >
+          
+        <h1>Bienvenidos</h1>
+        <ItemList/>
+      </div>
         
   )
 }
