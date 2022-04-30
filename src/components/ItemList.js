@@ -14,7 +14,7 @@ function ItemList() {
         const productPromise = new Promise ((resolve, reject) => {
             setTimeout(() => {
                 resolve (productList)
-            }, 3000);
+            }, 1000);
         })
         
         productPromise.then (item => {
