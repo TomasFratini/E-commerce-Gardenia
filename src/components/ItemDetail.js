@@ -11,7 +11,7 @@ function ItemDetail( props ) {
   return (
     
     <div className="card card-side bg-base-100 shadow-xl max-w-3xl max-h-full ">
-      <figure><img src={img} alt="Movie"/></figure>
+      <figure><img src={img} alt="img"/></figure>
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
         <p className="max-h-96">{description}</p>
