@@ -22,7 +22,7 @@ function ItemList() {
         })
     }
 
-
+    
   return (
     <div className='grid grid-cols-3 gap-4 place-items-stretch h-56 mt-8'>
         {productos.map(p => <Item key={p.id} productos={p}/>)}

@@ -1,14 +1,12 @@
-import ItemCount from "./ItemCount"
+import { Link } from "react-router-dom"
+
 
 
 function Item(props) {
 
-    const {name, description, precio, img} = props.productos
+    const {id, name, description, precio, img} = props.productos
 
-    const onAdd = (cantidad) => {
-        console.log("se agrego un producto", cantidad)
-    }
-
+    
   return (
       <div className="card w-max h-max shadow-xl flex space-x-4">
         <div className="card w-96 bg-base-100 shadow-xl ">
@@ -21,7 +19,7 @@ function Item(props) {
                 <strong>{precio}</strong>
                 <div className="card-actions">
                 </div>
-                <ItemCount stock={5} initial={1} onAdd={onAdd}/>
+                <Link to={`/productos/${id}`} className="btn btn-primary">Ver producto</Link>
             </div>
         </div>
 

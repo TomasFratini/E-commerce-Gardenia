@@ -23,7 +23,7 @@ function ItemCount({stock, initial, onAdd}) {
   
 return (
     <>
-    <div className="items-stretch">
+    <div className="">
 
         <button className="btn btn-xs" onClick={resHandler}> - </button>
         <strong className=""> {suma} </strong>
