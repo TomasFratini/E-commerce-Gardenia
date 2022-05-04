@@ -23,12 +23,14 @@ function ItemCount({stock, initial, onAdd}) {
   
 return (
     <>
-    <div className="">
-
-        <button className="btn btn-xs" onClick={resHandler}> - </button>
+    <div className="flex flex-col space-x-2">
+      <div className="flex space-x-1 pl-16 pb-2">
+        <button className="btn btn-xs btn-circle bg-primary-content" onClick={resHandler}> - </button>
         <strong className=""> {suma} </strong>
-        <button className="btn btn-xs" onClick={addHandler}> + </button>
-        <button className="btn btn-primary" onClick={() => onAdd(suma)} >Agregar al carrito</button>
+        <button className="btn btn-xs btn-circle bg-primary-content" onClick={addHandler}> + </button>
+      </div>
+      <button className="btn btn-primary" onClick={() => onAdd(suma)} >Agregar al carrito</button>
+      <strong>Stock: {stock}</strong>
     </div>
     </>
   )

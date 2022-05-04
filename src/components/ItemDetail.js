@@ -14,12 +14,12 @@ function ItemDetail( props ) {
       <figure><img src={img} alt="img"/></figure>
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
-        <p className="max-h-96">{description}</p>
-        <strong>{precio}</strong>
+        <p className="max-h-60">{description}</p>
         <div className="card-actions justify-end">
         </div>
           <ItemCount className="" stock={5} initial={1} onAdd={onAdd}/>
-      </div>
+          <strong className="max-h-60 text-xl">{precio}</strong>
+        </div>
     </div>
 
   )
