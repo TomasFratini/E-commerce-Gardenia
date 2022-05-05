@@ -8,29 +8,32 @@ function ItemListContainer() {
 
   const {categoriaId} = useParams()
 
-    const [category, setCategory] = useState([])
+    const [productos, setProductos] = useState([])
 
     useEffect(() => {
-        getCategory()
+      getProductos()
     }, [categoriaId])
-
-    const getCategory = () => {
-        const categoriaPromise = new Promise((resolve, reject) =>{
+    
+    const getProductos = () => {
+        const productPromise = new Promise ((resolve, reject) => {
             setTimeout(() => {
-                resolve (productList.filter (c => c.categoria == categoriaId))
+                resolve (productList)
             }, 1000);
         })
-
-        categoriaPromise.then (item => {
-            setCategory(item)
+        
+        productPromise.then (items => {
+            if (categoriaId) {
+                setProductos (productList.filter (c => c.categoria == categoriaId))
+            } else {
+                setProductos(items)
+            }
         })
-
     }
     
   return (
         
       <div>
-       <ItemList categ={category}/> 
+       <ItemList products={productos}/> 
       </div>
         
   )
