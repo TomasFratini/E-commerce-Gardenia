@@ -1,27 +1,40 @@
+import { useState } from "react"
+import { Link } from "react-router-dom"
 import ItemCount from "./ItemCount"
 
 function ItemDetail( props ) {
 
     const {id, name, description, precio, img} = props.detalle
 
+    const [finalize, setFinalize] = useState(false)
+
     const onAdd = (cantidad) => {
+      setFinalize(true)
       console.log("se agrego un producto", cantidad)
   }
 
   return (
     
     <div className="card card-side bg-base-100 shadow-xl max-w-3xl max-h-full ">
-      <figure><img src={img} alt="img"/></figure>
+      <figure><img className="" src={img} alt="img"/></figure>
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
+         <strong className="max-h-60 text-xl">{precio}</strong>
         <p className="max-h-60">{description}</p>
         <div className="card-actions justify-end">
         </div>
-          <ItemCount className="" stock={5} initial={1} onAdd={onAdd}/>
-          <strong className="max-h-60 text-xl">{precio}</strong>
+          {finalize ? (
+            <Link to="/cart" className="btn"> Ver Carrito </Link>
+          ) : (
+            <ItemCount className="" stock={5} initial={1} onAdd={onAdd}/>
+
+            )}
         </div>
-    </div>
+      </div>
 
   )
 }
 export default ItemDetail
+
+
+
