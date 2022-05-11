@@ -48,3 +48,11 @@ export const productList = [
     img: kit,
     categoria:"Velas"}
 ]
+
+const promise = new Promise ((resp) => {
+    resp(productList)
+}, 2000)
+
+export const getItem = () => {
+    return promise
+}

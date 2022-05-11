@@ -1,6 +1,7 @@
 import fondo from "../img/fondo.jpg"
+import ItemList from "./ItemList"
 
-function Presentation() {
+function Presentation(productos) {
 
     const styleContainer = {
         backgroundImage: `url(${fondo})`

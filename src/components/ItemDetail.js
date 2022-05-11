@@ -24,14 +24,13 @@ function ItemDetail( props ) {
         <div className="card-actions justify-end">
         </div>
           {finalize ? (
-            <Link to="/cart" className="btn"> Ver Carrito </Link>
+          <Link to="/cart" className="btn"> Ver Carrito </Link>
           ) : (
-            <ItemCount className="" stock={5} initial={1} onAdd={onAdd}/>
+          <ItemCount className="" stock={5} initial={1} onAdd={onAdd} id={id}/>
 
-            )}
-        </div>
+          )}
       </div>
-
+    </div>
   )
 }
 export default ItemDetail

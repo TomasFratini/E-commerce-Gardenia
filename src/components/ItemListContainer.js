@@ -10,32 +10,41 @@ function ItemListContainer() {
   const {categoriaId} = useParams()
 
     const [productos, setProductos] = useState([])
+    const [mostrar, setMostrar] = useState(true)
 
     useEffect(() => {
       getProductos()
+      
     }, [categoriaId])
     
     const getProductos = () => {
-        const productPromise = new Promise ((resolve, reject) => {
+        const categoryPromise = new Promise ((resolve, reject) => {
             setTimeout(() => {
                 resolve (productList)
-            }, 1000);
+            }, 2000);
+            
         })
         
-        productPromise.then (items => {
+        categoryPromise.then (items => {
             if (categoriaId) {
                 setProductos (productList.filter (c => c.categoria == categoriaId))
             } else {
-                setProductos(items)
+                setProductos(items)  
+                setMostrar(false)
             }
-        })
-    }
-    
+          })
+          
+        }
+        
   return (
         
     <div>
+      {mostrar ? (
         <Presentation/>
+        ) : (
         <ItemList products={productos}/> 
+          
+      )}
     </div>
         
   )
