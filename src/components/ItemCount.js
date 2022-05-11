@@ -15,7 +15,7 @@ function ItemCount({stock, initial, onAdd, id}) {
     if (suma < initial) {
         setSuma(0)
     }
-    
+      
   }
 
   const addHandler = () => {
@@ -37,8 +37,6 @@ function ItemCount({stock, initial, onAdd, id}) {
     addToCart(findProduct, cantidad)
     onAdd(suma)
   }
-  
-
   
   return (
     <>

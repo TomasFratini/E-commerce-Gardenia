@@ -5,7 +5,6 @@ const CartContext = createContext()
 
 export const useCartContext = () => useContext(CartContext)
 
-
 function CartContextProvider({children}) {
 
 	const [cart, setCart] = useState([])
@@ -13,7 +12,8 @@ function CartContextProvider({children}) {
 	// Si esta en el carrito?
 
 	const isInCart = (id) => {
-		cart.find(producto=> producto.id === id)
+		return cart.find(producto=> producto.id === id)
+
 	}
 
 	// Agregar item al carrito
