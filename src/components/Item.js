@@ -16,10 +16,10 @@ function Item(props) {
             <div className="card-body items-center text-center">
                 <h2 className="card-title">{name}</h2>
                 <p>{description}</p>
-                <strong>{precio}</strong>
+                <strong>${precio}</strong>
                 <div className="card-actions">
                 </div>
-                <Link to={`/productos/${id}`} className="btn btn-primary">Ver producto</Link>
+                <Link to={`/productos/${id}`} className="btn btn-outline">Ver producto</Link>
             </div>
         </div>
 

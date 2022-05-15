@@ -19,12 +19,19 @@ function ItemDetail( props ) {
       <figure><img className="" src={img} alt="img"/></figure>
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
-         <strong className="max-h-60 text-xl">{precio}</strong>
+         <strong className="max-h-60 text-xl">${precio}</strong>
         <p className="max-h-60">{description}</p>
         <div className="card-actions justify-end">
         </div>
           {finalize ? (
-          <Link to="/cart" className="btn"> Ver Carrito </Link>
+            <div className="flex"> 
+              <Link to="/cart" className="btn btn-outline m-1"> Ver Carrito </Link>
+              <Link to="/">
+                <button className="btn btn-outline m-1">
+                    Seguir comprando
+                </button>
+              </Link>
+            </div>
           ) : (
           <ItemCount className="" stock={5} initial={1} onAdd={onAdd} id={id}/>
 

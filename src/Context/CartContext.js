@@ -33,28 +33,46 @@ function CartContextProvider({children}) {
 		setCart([...newCart, producto])
 	}
 
+	// Contar items
+
+	const contar = () => {
+		const newCart = [...cart]
+		let iTotal = 0
+		newCart.forEach(e => iTotal += e.quantity)
+		return iTotal
+		
+	}
+
 	// Eliminar item del carrito
 
-	const delateFromCart = (producto) => {
-		const newCart = [...cart]
-
-		const productIsInCart = isInCart(producto.id)
-
-		if (!productIsInCart) {
-			return
-		}
-
-		const delateProduct = newCart.filter((prod) => prod.id !== producto.id)
+	const delateFromCart = (id) => {
+		
+		const delateProduct = cart.filter(prod => prod.id !== id)
 
 		setCart(delateProduct)
 	}
 
+	// Vaciar carrito
+
 	const delateCart = () => setCart([])
+
+	// Precio Total
+
+	const PrecioTotal = () => {
+		const newCart = [...cart]
+		let pTotal = 0
+		newCart.forEach(e => pTotal += (e.precio * e.quantity))
+		return pTotal
+
+	}
+
 
 	console.log(cart)
 
 	return <CartContext.Provider value={{
 			cart,
+			contar,
+			PrecioTotal,
 			addToCart,
 			delateFromCart,
 			delateCart,

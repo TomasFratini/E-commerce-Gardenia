@@ -1,9 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useCartContext } from '../Context/CartContext'
 import CartWidget from './CartWidget'
 
-const NavBar = (props) => {
+const NavBar = () => {
+
 
   return (
   <div className="navbar bg-base-100"><font></font>
