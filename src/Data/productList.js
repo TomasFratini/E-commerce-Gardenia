@@ -11,42 +11,48 @@ export const productList = [
     description:"Jabones vegetales", 
     precio:"400", 
     img: jabones, 
-    categoria:"Jabones" },
+    categoria:"Jabones",
+    stock: 5},
 
     {id:"2",
     name: "Velas de soja",
     description:"Velas a base de cera de soja y aceites esenciales",
     precio:"950",
     img: velas,
-    categoria:"Velas"},
+    categoria:"Velas",
+    stock: 7},
 
     {id:"3",
     name: "Aromatizadores de tela y ambiente",
     description:"Lorem ipsum, dolor sit amet consectetur adipisicing elit",
     precio:"800",
     img: aromatizadores,
-    categoria:"Difusor"},
+    categoria:"Difusor",
+    stock: 15},
 
     {id:"4",
     name: "Aromatizadores colgantes",
     description:"Difusores de aceites esenciales para espacios pequeños",
     precio:"600",
     img: difusores,
-    categoria:"Difusor"},
+    categoria:"Difusor",
+    stock: 8},
 
     {id:"5",
     name: "Box para regalar",
     description:"Box para regalar (Vela de soja XL, aromatizador de 250ml, dos jabones vegetales)",
     precio:"2700",
     img: box,
-    categoria:"Jabones"},
+    categoria:"Jabones",
+    stock: 4},
 
     {id:"6",
     name: "Kit Ralajacion",
     description:"Vela de soja mas aromatizador de lavanda",
     precio:"1700",
     img: kit,
-    categoria:"Velas"}
+    categoria:"Velas",
+    stock: 10}
 ]
 
 const promise = new Promise ((resp) => {

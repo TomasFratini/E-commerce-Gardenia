@@ -3,7 +3,7 @@ import { useCartContext } from "../Context/CartContext"
 
 function CartItem({ products }) {
 
-    const {name, img, id, description, quantity, precio } = products
+    const {name, img, id, quantity, precio } = products
     const { delateFromCart } = useCartContext()
 
     const totalPorItem = () => {

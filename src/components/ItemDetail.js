@@ -4,7 +4,7 @@ import ItemCount from "./ItemCount"
 
 function ItemDetail( props ) {
 
-    const {id, name, description, precio, img} = props.detalle
+    const {id, name, description, precio, img, stock} = props.detalle
 
     const [finalize, setFinalize] = useState(false)
 
@@ -33,7 +33,7 @@ function ItemDetail( props ) {
               </Link>
             </div>
           ) : (
-          <ItemCount className="" stock={5} initial={1} onAdd={onAdd} id={id}/>
+          <ItemCount className="" stock={stock} initial={1} onAdd={onAdd} id={id}/>
 
           )}
       </div>
