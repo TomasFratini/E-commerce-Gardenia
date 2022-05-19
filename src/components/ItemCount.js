@@ -10,7 +10,7 @@ function ItemCount({stock, initial, onAdd, id, img, name}) {
  const { products } = useAppContext()
 
   const resHandler = () => {
-      
+    
     setSuma(suma-1)
     if (suma < initial) {
         setSuma(0)

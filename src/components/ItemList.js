@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import { productList } from "../Data/productList";
 import Item from "./Item";
 
 function ItemList({products}) {

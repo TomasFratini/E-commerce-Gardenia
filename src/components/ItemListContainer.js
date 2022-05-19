@@ -1,40 +1,43 @@
 import { useEffect, useState } from "react"
-import ItemList from "./ItemList"
-import { productList } from "../Data/productList";
+import  ItemList  from "./ItemList"
 import { useParams } from "react-router-dom";
 import Presentation from "./Presentation";
+import { useAppContext } from "../Context/AppContext";
 
 
 function ItemListContainer() {
 
+  const { products } = useAppContext()
+
   const {categoriaId} = useParams()
 
-    const [productos, setProductos] = useState([])
-    const [mostrar, setMostrar] = useState(true)
+  const [productos, setProductos] = useState([])
+  const [mostrar, setMostrar] = useState(true)
 
-    useEffect(() => {
-      getProductos()
-      
-    }, [categoriaId])
+  useEffect(() => {
+    getProductos()
     
-    const getProductos = () => {
-        const categoryPromise = new Promise ((resolve, reject) => {
-            setTimeout(() => {
-                resolve (productList)
-            }, 2000);
-            
+  },[categoriaId])
+  
+  const getProductos = () => {
+      const categoryPromise = new Promise ((resolve, reject) => {
+          setTimeout(() => {
+              resolve (products)
+          }, 2000);
+          
+      })
+      
+      categoryPromise.then (items => {
+          if (categoriaId) {
+            setMostrar(false)
+              setProductos (products.filter (c => c.category == categoriaId))
+          } else {
+              setProductos(items)  
+              setMostrar(false)
+          }
         })
         
-        categoryPromise.then (items => {
-            if (categoriaId) {
-                setProductos (productList.filter (c => c.categoria == categoriaId))
-            } else {
-                setProductos(items)  
-                setMostrar(false)
-            }
-          })
-          
-        }
+      }
         
   return (
         
@@ -42,7 +45,7 @@ function ItemListContainer() {
       {mostrar ? (
         <Presentation/>
         ) : (
-        <ItemList products={productos}/> 
+        <ItemList products={products}/> 
           
       )}
     </div>

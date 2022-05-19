@@ -1,4 +1,4 @@
-import jabones from "../img/jabones.png"
+/* import jabones from "../img/jabones.png"
 import aromatizadores from "../img/aromatizadores.jpeg"
 import box from "../img/box.jpeg"
 import difusores from "../img/difusorescolgantes.jpeg"
@@ -61,4 +61,4 @@ const promise = new Promise ((resp) => {
 
 export const getItem = () => {
     return promise
-}
+} */

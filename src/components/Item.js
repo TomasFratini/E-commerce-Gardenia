@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom"
 
-
-
 function Item(props) {
 
     const {id, name, description, precio, img} = props.productos
