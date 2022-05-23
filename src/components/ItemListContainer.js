@@ -7,7 +7,7 @@ import { useAppContext } from "../Context/AppContext";
 
 function ItemListContainer() {
 
-  const { products } = useAppContext()
+  const { items } = useAppContext()
 
   const {categoriaId} = useParams()
 
@@ -22,7 +22,7 @@ function ItemListContainer() {
   const getProductos = () => {
       const categoryPromise = new Promise ((resolve, reject) => {
           setTimeout(() => {
-              resolve (products)
+              resolve (items)
           }, 2000);
           
       })
@@ -30,7 +30,7 @@ function ItemListContainer() {
       categoryPromise.then (items => {
           if (categoriaId) {
             setMostrar(false)
-              setProductos (products.filter (c => c.category == categoriaId))
+              setProductos (items.filter (c => c.category == categoriaId))
           } else {
               setProductos(items)  
               setMostrar(false)
@@ -41,11 +41,11 @@ function ItemListContainer() {
         
   return (
         
-    <div>
+    <div className="">
       {mostrar ? (
         <Presentation/>
         ) : (
-        <ItemList products={products}/> 
+        <ItemList products={productos}/> 
           
       )}
     </div>

@@ -1,26 +1,26 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import { useAppContext } from "../Context/AppContext"
 import ItemCount from "./ItemCount"
 
-function ItemDetail( props ) {
+function ItemDetail({detalles}) {
 
-    const {id, name, description, precio, img, stock} = props.detalle
+   //const { name, description, precio, img, stock, id} = props.detalle
 
     const [finalize, setFinalize] = useState(false)
 
     const onAdd = (cantidad) => {
       setFinalize(true)
-      console.log("se agrego un producto", cantidad)
   }
 
   return (
     
     <div className="card card-side bg-base-100 shadow-xl max-w-3xl max-h-full ">
-      <figure><img className="" src={img} alt="img"/></figure>
+      <figure><img className="" src={detalles.img} alt="img"/></figure>
       <div className="card-body">
-        <h2 className="card-title">{name}</h2>
-         <strong className="max-h-60 text-xl">${precio}</strong>
-        <p className="max-h-60">{description}</p>
+        <h2 className="card-title">{detalles.name}</h2>
+         <strong className="max-h-60 text-xl">${detalles.precio}</strong>
+        <p className="max-h-60">{detalles.description}</p>
         <div className="card-actions justify-end">
         </div>
           {finalize ? (
@@ -33,7 +33,7 @@ function ItemDetail( props ) {
               </Link>
             </div>
           ) : (
-          <ItemCount className="" stock={stock} initial={1} onAdd={onAdd} id={id}/>
+          <ItemCount className="" stock={detalles.stock} initial={2} onAdd={onAdd} id={detalles.id}/>
 
           )}
       </div>

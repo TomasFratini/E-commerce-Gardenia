@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react"
-import { collection, doc, getDoc, getDocs, getFirestore } from "firebase/firestore";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 
 const AppContext = createContext()
 
@@ -7,22 +7,23 @@ export const useAppContext = () => useContext(AppContext)
 
 function AppContextProvider( {children}) {
 
-   const [products, setProducts] = useState([])
+   const [items, setItems] = useState([])
 
    useEffect(() => {
     const db = getFirestore() 
 
     const productos = collection(db, 'items')
+
     getDocs(productos).then( (snapshot) => { 
         const productList = []
         snapshot.docs.forEach(s => {
           productList.push( { id: s.id, ...s.data() } )
         });
-      setProducts(productList)
+        setItems(productList)
       })
   }, [])
 
-  return <AppContext.Provider value={{products}}> {children}</AppContext.Provider>
+  return <AppContext.Provider value={{items}}> {children}</AppContext.Provider>
     
   
 }

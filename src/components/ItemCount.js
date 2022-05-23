@@ -4,16 +4,16 @@ import { useCartContext } from "../Context/CartContext"
 
 function ItemCount({stock, initial, onAdd, id, img, name}) {
   
-  const [suma, setSuma] = useState(initial)
+  const [suma, setSuma] = useState(1)
 
  const { addToCart } = useCartContext()
- const { products } = useAppContext()
+ const { items } = useAppContext()
 
   const resHandler = () => {
     
-    setSuma(suma-1)
+    setSuma(suma - 1)
     if (suma < initial) {
-        setSuma(0)
+        setSuma(1)
     }
       
   }
@@ -27,7 +27,7 @@ function ItemCount({stock, initial, onAdd, id, img, name}) {
   }
 
   const handlClick = (id, cantidad, img, name) => {
-    const findProduct = products.find ((producto) => producto.id === id)
+    const findProduct = items.find ((producto) => producto.id === id)
 
     if (!findProduct) {
         alert("Error")

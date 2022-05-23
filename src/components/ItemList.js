@@ -2,10 +2,10 @@ import Item from "./Item";
 
 function ItemList({products}) {
 
-    
+    //console.log(products);
   return (
     <div className='grid grid-cols-3 gap-4 place-items-stretch h-56 mt-8'>
-        {products.map(p => <Item key={p.id} productos={p}/>)}
+        {products.map(p => <Item key={p.id} products={p}/>)}
     </div>
   )
 }

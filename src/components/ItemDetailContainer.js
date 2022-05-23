@@ -7,7 +7,7 @@ function ItemDetailContainer() {
 
     const [detalle, setDetalle] = useState({})
     
-    const { products } = useAppContext()
+    const { items } = useAppContext()
 
     const { itemId } = useParams()
 
@@ -18,18 +18,19 @@ function ItemDetailContainer() {
     const getProductos = () => {
         const detallePromise = new Promise ((resolve, reject) => {
             setTimeout(() => {
-                resolve (products.find(p => p.id == itemId)
+                resolve (items.find(p => p.id == itemId)
             )}, 1000);
         })
         
         detallePromise.then (item => {
             setDetalle(item)
+            //console.log(item);
         })
     }
     
   return (
     <div className="flex justify-center">
-        <ItemDetail detalle={detalle}/>
+        <ItemDetail detalles={detalle}/>
     </div>
   )
 }

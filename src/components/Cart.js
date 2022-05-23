@@ -28,7 +28,7 @@ function Cart() {
       return (
         <>
 
-<div>
+            <div>
                 {/* Detalle de cada producto agregado */}
                 <div>
                     {cart.map((c) => {
@@ -63,15 +63,6 @@ function Cart() {
                     </Link>
                 </div>
             </div>
-
-          {/* <div>{cart.map(c => <CartItem key={c.id} products={c}/>)}</div>
-          <strong> Total: $ {PrecioTotal()} </strong>
-          <p>Cantidad de Productos: {contar()}</p>
-          <button className="btn" onClick={() => {delateCart()}}> Vaciar carrito</button>
-          <Link to="/">
-              <button className="btn"> Seguir comprando</button>
-            </Link>  */}
-
             
 
         </>
