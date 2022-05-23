@@ -24,7 +24,7 @@ function ItemDetailContainer() {
         
         detallePromise.then (item => {
             setDetalle(item)
-            //console.log(item);
+            console.log(item);
         })
     }
     

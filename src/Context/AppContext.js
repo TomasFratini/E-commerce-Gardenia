@@ -9,7 +9,7 @@ function AppContextProvider( {children}) {
 
    const [items, setItems] = useState([])
 
-   useEffect(() => {
+    useEffect(() => {
     const db = getFirestore() 
 
     const productos = collection(db, 'items')
