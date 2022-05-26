@@ -6,20 +6,16 @@ import { getAnalytics } from "firebase/analytics";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyChJTpImTVa5iVEDPdly52PsvfIB2QeNY0",
-  authDomain: "tomasfratini-ecommerce.firebaseapp.com",
-  projectId: "tomasfratini-ecommerce",
-  storageBucket: "tomasfratini-ecommerce.appspot.com",
-  messagingSenderId: "996580656596",
-  appId: "1:996580656596:web:d49f39cfdc47d3a9b34241",
-  measurementId: "G-HQSQWKN762"
+  apiKey:process.env.REACT_APP_APIKEY,
+  authDomain:process.env.REACT_APP_AUTHDOMAIN,
+  projectId:process.env.REACT_APP_PROJECTID,
+  storageBucket:process.env.REACT_APP_STORAGEBUCKET,
+  messagingSenderId:process.env.REACT_APP_MESSAGINGSENDERID,
+  appId:process.env.REACT_APP_APPID,
+  measurementId:process.env.REACT_APP_MEASUREMENTID 
 }; 
 
 const App = initializeApp(firebaseConfig);
-
-
-
-
 
 const db = getFirestore()
 const comprasColeccion = collection(db, "orders")
