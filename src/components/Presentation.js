@@ -1,5 +1,5 @@
 import fondo from "../img/fondo.jpg"
-import ItemList from "./ItemList"
+import ItemList from "./ContainerItem/ItemList"
 
 function Presentation(productos) {
 

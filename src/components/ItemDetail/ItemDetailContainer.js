@@ -1,7 +1,7 @@
 import ItemDetail from "./ItemDetail"
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useAppContext } from "../Context/AppContext";
+import { useAppContext } from "../../Context/AppContext";
 
 function ItemDetailContainer() {
 
@@ -24,7 +24,6 @@ function ItemDetailContainer() {
         
         detallePromise.then (item => {
             setDetalle(item)
-            console.log(item);
         })
     }
     

@@ -1,11 +1,9 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import { useAppContext } from "../Context/AppContext"
+import { useAppContext } from "../../Context/AppContext"
 import ItemCount from "./ItemCount"
 
 function ItemDetail({detalles}) {
-
-   //const { name, description, precio, img, stock, id} = props.detalle
 
     const [finalize, setFinalize] = useState(false)
 
@@ -15,7 +13,7 @@ function ItemDetail({detalles}) {
 
   return (
     
-    <div className="card card-side bg-base-100 shadow-xl max-w-3xl max-h-full ">
+    <div className="card bg-base-100 shadow-xl max-w-3xl max-h-full ">
       <figure><img className="" src={detalles.img} alt="img"/></figure>
       <div className="card-body">
         <h2 className="card-title">{detalles.name}</h2>
@@ -33,7 +31,7 @@ function ItemDetail({detalles}) {
               </Link>
             </div>
           ) : (
-          <ItemCount className="" stock={detalles.stock} initial={2} onAdd={onAdd} id={detalles.id}/>
+          <ItemCount className="flex justify-center" stock={detalles.stock} initial={2} onAdd={onAdd} id={detalles.id}/>
 
           )}
       </div>

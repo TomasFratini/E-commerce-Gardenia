@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import  ItemList  from "./ItemList"
 import { useParams } from "react-router-dom";
-import Presentation from "./Presentation";
+import Presentation from "../Presentation";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 
 
@@ -10,7 +10,7 @@ function ItemListContainer() {
   const {categoriaId} = useParams()
 
   const [productos, setProductos] = useState([])
-  const [mostrar, setMostrar] = useState(false)
+  // const [mostrar, setMostrar] = useState(false)
 
   useEffect(() => {
     const db = getFirestore() 
@@ -29,15 +29,17 @@ function ItemListContainer() {
   }, [categoriaId])
         
   return (
-        
     <div className="">
-      {productos.length == 0 ? (
-        <Presentation/>
-        ) : (
-        <ItemList products={productos}/> 
-          
-      )}
-    </div>
+      <div className="col-span-6 sm:col-span-3">
+        {productos.length == 0 ? (
+          <Presentation/>
+          ) : (
+          <ItemList products={productos}/> 
+            
+        )}
+      </div>
+
+    </div>  
         
   )
 }

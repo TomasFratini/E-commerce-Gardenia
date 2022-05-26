@@ -4,9 +4,9 @@ function ItemList({products}) {
 
     //console.log(products);
   return (
-    <div className='grid grid-cols-3 gap-4 place-items-stretch h-56 mt-8'>
+    <div className='grid grid-cols-3 gap-4 place-items-stretch '>
         {products.map(p => <Item key={p.id} products={p}/>)}
-    </div>
+    </div>   
   )
 }
 export default ItemList

@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useCartContext } from '../Context/CartContext'
-import CartWidget from './CartWidget'
+import CartWidget from './Cart/CartWidget'
 
 const NavBar = () => {
 
@@ -18,6 +17,7 @@ const NavBar = () => {
           <li><Link to={'/categoria/Jabones'}>Jabones</Link></li><font></font>
           <li><Link to={'/categoria/Velas'}>Velas</Link></li><font></font>
           <li><Link to={'/categoria/Difusor'}>Aromatizadores</Link></li><font></font>
+          <li><Link to={'/categoria/Box'}>Box</Link></li><font></font>
         </ul><font></font>
       </div><font></font>
     </div><font></font>

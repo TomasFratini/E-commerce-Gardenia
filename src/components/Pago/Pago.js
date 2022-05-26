@@ -1,16 +1,19 @@
+import { useState } from "react"
 import { Link } from "react-router-dom"
 import { useCartContext } from "../../Context/CartContext"
+import { grabarCompra } from "../Firebase/FirebaseClient"
 
 function Pago() {
 
-  const { contar, PrecioTotal, cart } = useCartContext()
+  const { contar, PrecioTotal, cart, delateCart } = useCartContext()
 
   const armadoCompra = (datos) => {
     const productsCompra = cart.map( (p) =>{
       return {
           id: p.id,
-          name: p.price,
-          quantity: p.cantidad
+          name: p.name,
+          price: p.precio,
+          quantity: contar()
       }
     })
 
@@ -22,10 +25,33 @@ function Pago() {
 
     console.log(compra);
 
-
+    grabarCompra(compra)
+    delateCart()
+    console.log("compra realizada");
 
   }
     
+  const [cliente, setCliente] = useState({
+    nombre: "",
+    apellido: "",
+    mail: "",
+    provincia: "",
+    direccion: "",
+    localidad: "",
+    tarjeta: "",
+    propietario: "",
+    cvv: "",
+    fecha: ""
+  })
+
+  const handleInput = (evt) => {
+    const target = evt.target;
+    const value = target.value;
+    const nameInput = target.name;
+
+    setCliente({...cliente, [nameInput]: value})
+  }
+
   return (
     <>
       <div className="hidden sm:block" aria-hidden="true">
@@ -38,8 +64,8 @@ function Pago() {
           <div className="md:col-span-1">
             <div className="px-4 sm:px-0">
               <h3 className="text-lg font-medium leading-6 text-gray-900">Productos en carrito</h3>
-              <p className="mt-1 text-sm text-gray-600">Cantidad de productos añadidos: {contar()}</p>
-              <p className="mt-1 text-sm text-gray-600">Precio total a abonar: ${PrecioTotal()}</p>
+              <h4 className="mt-1 text-sm text-gray-600">Cantidad de productos añadidos: {contar()}</h4>
+              <h5 className="mt-1 text-sm text-gray-600">Precio total a abonar: ${PrecioTotal()}</h5>
             </div>
         </div>
         <div className="mt-5 md:mt-0 md:col-span-2">
@@ -53,6 +79,10 @@ function Pago() {
                     </label>
                     <input
                       type="text"
+                      onChange={(evt) =>
+                      handleInput(evt)
+                      }
+                      value={cliente.nombre}
                       name="nombre"
                       className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       placeholder="Ingrese nombre"
@@ -65,6 +95,10 @@ function Pago() {
                     </label>
                     <input
                       type="text"
+                      onChange={(evt) =>
+                        handleInput(evt)
+                        }
+                        value={cliente.apellido}
                       name="apellido"
                       className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       placeholder="Ingrese apellido"
@@ -77,22 +111,30 @@ function Pago() {
                     </label>
                     <input
                       type="text"
-                      name="correo electronico"
+                      onChange={(evt) =>
+                        handleInput(evt)
+                        }
+                        value={cliente.mail}
+                      name="mail"
                       className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       placeholder="Ingrese correo"
                     />
                   </div>
 
-                  <div className="col-span-6 sm:col-span-3">
-                    <label htmlFor="country" className="block text-sm font-medium text-gray-700">
+                  <div className="col-span-6 sm:col-span-4">
+                    <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">
                       Provincia
                     </label>
-                    <select
+                    <input
+                      type="text"
+                      onChange={(evt) =>
+                        handleInput(evt)
+                        }
+                        value={cliente.provincia}
                       name="provincia"
-                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    >
-                      <option>Cordoba</option>
-                    </select>
+                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      placeholder="Ingrese provincia"
+                    />
                   </div>
 
                   <div className="col-span-6">
@@ -101,6 +143,10 @@ function Pago() {
                     </label>
                     <input
                       type="text"
+                      onChange={(evt) =>
+                        handleInput(evt)
+                        }
+                        value={cliente.direccion}
                       name="direccion"
                       className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       placeholder="Ingrese direccion"
@@ -113,6 +159,10 @@ function Pago() {
                     </label>
                     <input
                       type="text"
+                      onChange={(evt) =>
+                        handleInput(evt)
+                        }
+                        value={cliente.localidad}
                       name="localidad"
                       className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       placeholder="Ingrese localidad"
@@ -124,8 +174,12 @@ function Pago() {
                       Numero de tarjeta
                     </label>
                     <input
-                      type="text"
-                      name="numero de tarjeta"
+                      type="number"
+                      onChange={(evt) =>
+                        handleInput(evt)
+                        }
+                        value={cliente.tarjeta}
+                      name="tarjeta"
                       className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       placeholder="Ingrese numero de tarjeta"
                     />
@@ -137,7 +191,11 @@ function Pago() {
                     </label>
                     <input
                       type="text"
-                      name="nombre titular"
+                      onChange={(evt) =>
+                        handleInput(evt)
+                        }
+                        value={cliente.propietario}
+                      name="propietario"
                       className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       placeholder="Ingrese nombre del titular"
                     />
@@ -147,8 +205,12 @@ function Pago() {
                       Codigo de seguridad
                     </label>
                     <input
-                      type="text"
-                      name="codigo de seguridad"
+                      type="number"
+                      onChange={(evt) =>
+                        handleInput(evt)
+                        }
+                        value={cliente.cvv}
+                      name="cvv"
                       className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       placeholder="Ingrese codigo de seguridad"
                     />
@@ -159,9 +221,13 @@ function Pago() {
                     </label>
                     <input
                       type="date"
+                      onChange={(evt) =>
+                        handleInput(evt)
+                        }
+                        value={cliente.fecha}
                       min="01-01-2022"
                       max="01-01-2030"
-                      name="bday"
+                      name="fecha"
                       className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       placeholder="Ingrese fecha de vencimiento"
                     />
@@ -171,6 +237,7 @@ function Pago() {
                 <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
                   <Link to="../finalizado">
                     <button
+                    onClick={() => {armadoCompra(cliente)}}
                       type="submit"
                       className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                       Comprar

@@ -1,14 +1,14 @@
 import './App.css';
 import NavBar from './components/NavBar';
-import ItemListContainer from './components/ItemListContainer';
-import ItemDetailContainer from './components/ItemDetailContainer';
+import ItemListContainer from './components/ContainerItem/ItemListContainer';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CartContextProvider from './Context/CartContext';
 import AppContextProvider from './Context/AppContext';
-import Cart from './components/Cart';
 import Pago from './components/Pago/Pago';
 import Footer from './components/Footer/Footer';
 import PagoFinalizado from './components/Pago/PagoFinalizado';
+import Cart from './components/Cart/Cart';
+import ItemDetailContainer from './components/ItemDetail/ItemDetailContainer';
 
 
 

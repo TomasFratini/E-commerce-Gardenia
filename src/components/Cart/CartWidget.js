@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { useCartContext } from "../Context/CartContext"
+import { useCartContext } from "../../Context/CartContext"
 
 function CartWidget() {
 
