@@ -1,7 +1,8 @@
-import { initializeApp } from "firebase/app";
+/* import { initializeApp } from "firebase/app";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 
 import { initializeAppp } from "firebase/app";
+import { useState } from "react";
 
 
 const firebaseConfig = {
@@ -16,11 +17,18 @@ const firebaseConfig = {
 
 const App = initializeApp(firebaseConfig);
 
+
+
 const db = getFirestore()
 const comprasColeccion = collection(db, "orders")
 
-export const grabarCompra = async (array) => {
+let compra = ""
+
+export const grabarCompra = async (array, setIdCompra) => {
     const respuesta = await addDoc(comprasColeccion, array)
-    const orden = respuesta.id
-    return (respuesta, orden)
+    setIdCompra(respuesta.id)
+    compra = (respuesta.id);
+    return respuesta
+    
 }
+ */

@@ -2,12 +2,9 @@ import { useState } from "react"
 import { useAppContext } from "../../Context/AppContext"
 import { useCartContext } from "../../Context/CartContext"
 
-function ItemCount({stock, initial, onAdd, id, img, name}) {
+function ItemCount({stock, initial, onAdd}) {
   
   const [suma, setSuma] = useState(1)
-
- const { addToCart } = useCartContext()
- const { items } = useAppContext()
 
   const resHandler = () => {
     
@@ -25,17 +22,17 @@ function ItemCount({stock, initial, onAdd, id, img, name}) {
     }
   }
 
-  const handlClick = (id, cantidad, img, name) => {
+  /* const handlClick = (id, cantidad, img, name) => {
     const findProduct = items.find ((producto) => producto.id === id)
 
     if (!findProduct) {
         alert("Error")
         return
-    }
+    } */
 
-    addToCart(findProduct, cantidad)
-    onAdd(suma)
-  }
+    // addToCart(findProduct, cantidad)
+    // onAdd(suma)
+  
   
   return (
     <>
@@ -46,7 +43,7 @@ function ItemCount({stock, initial, onAdd, id, img, name}) {
         <strong className=""> {suma} </strong>
         <button className="btn btn-xs btn-circle bg-primary-content" onClick={addHandler}> + </button>
       </div>
-      <button className="btn btn-outline" onClick={() => handlClick(id, suma, img, name)} >Agregar al carrito</button>
+      <button className="btn btn-outline" onClick={() => onAdd(suma)} >Agregar al carrito</button>
     </div>
     </>
   )

@@ -1,13 +1,17 @@
+import { addDoc, collection, getFirestore } from "firebase/firestore"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import { useCartContext } from "../../Context/CartContext"
-import { grabarCompra } from "../Firebase/FirebaseClient"
 
 function Pago() {
 
+
+
   const { contar, PrecioTotal, cart, delateCart } = useCartContext()
 
-  const armadoCompra = (datos) => {
+  const [idCompra, setIdCompra] = useState("")
+
+  const armadoCompra = async (datos) => {
     const productsCompra = cart.map( (p) =>{
       return {
           id: p.id,
@@ -23,9 +27,15 @@ function Pago() {
       total: PrecioTotal()
     }
 
-    console.log(compra);
+    const db = getFirestore()
+    const comprasColeccion = collection(db, "orders")
 
-    grabarCompra(compra)
+    
+      const respuesta = await addDoc(comprasColeccion, compra)
+      setIdCompra(respuesta.id)
+      console.log(respuesta.id);
+      
+  
     delateCart()
   }
     

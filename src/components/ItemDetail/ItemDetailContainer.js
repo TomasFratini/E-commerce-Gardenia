@@ -12,24 +12,12 @@ function ItemDetailContainer() {
     const { itemId } = useParams()
 
     useEffect(() => {
-      getProductos()
+     setDetalle(items.find(p => p.id == itemId))
     }, [itemId])
-    
-    const getProductos = () => {
-        const detallePromise = new Promise ((resolve, reject) => {
-            setTimeout(() => {
-                resolve (items.find(p => p.id == itemId)
-            )}, 1000);
-        })
-        
-        detallePromise.then (item => {
-            setDetalle(item)
-        })
-    }
     
   return (
     <div className="flex justify-center">
-        <ItemDetail detalles={detalle}/>
+        <ItemDetail detalle={detalle}/>
     </div>
   )
 }

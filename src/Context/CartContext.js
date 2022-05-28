@@ -73,7 +73,7 @@ function CartContextProvider({children}) {
 			addToCart,
 			delateFromCart,
 			delateCart,
-			setCart,
+			setCart
 		}}>{children}</CartContext.Provider>
 			
 		
