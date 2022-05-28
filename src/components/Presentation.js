@@ -1,5 +1,4 @@
 import fondo from "../img/fondo.jpg"
-import ItemList from "./ContainerItem/ItemList"
 
 function Presentation(productos) {
 
@@ -13,7 +12,6 @@ function Presentation(productos) {
         <div className="hero-content text-center text-neutral-content">
             <div className="max-w-md">
                 <h1 className="mb-5 text-5xl font-bold">Bienvenidos</h1>
-                <p className="mb-5">Creamos productos organicos, puros, escenciales.</p>
             </div>
         </div>
     </div>

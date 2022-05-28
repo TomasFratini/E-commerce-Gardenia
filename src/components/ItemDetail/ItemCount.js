@@ -23,7 +23,6 @@ function ItemCount({stock, initial, onAdd, id, img, name}) {
     if (suma >= stock) {
       setSuma(stock)
     }
-    
   }
 
   const handlClick = (id, cantidad, img, name) => {

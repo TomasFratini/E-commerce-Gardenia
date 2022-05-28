@@ -27,8 +27,6 @@ function Pago() {
 
     grabarCompra(compra)
     delateCart()
-    console.log("compra realizada");
-
   }
     
   const [cliente, setCliente] = useState({

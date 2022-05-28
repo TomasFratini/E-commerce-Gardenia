@@ -2,7 +2,6 @@ import { initializeApp } from "firebase/app";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 
 import { initializeAppp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 
 
 const firebaseConfig = {
@@ -22,5 +21,6 @@ const comprasColeccion = collection(db, "orders")
 
 export const grabarCompra = async (array) => {
     const respuesta = await addDoc(comprasColeccion, array)
-    return respuesta
+    const orden = respuesta.id
+    return (respuesta, orden)
 }

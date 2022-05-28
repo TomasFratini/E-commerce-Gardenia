@@ -3,7 +3,6 @@ import { Link } from "react-router-dom"
 function Item(props) {
 
     const {id, name, description, precio, img} = props.products
-
     
   return (
       <div className="card w-max h-max shadow-xl flex space-x-4">

@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import { useAppContext } from "../../Context/AppContext"
 import ItemCount from "./ItemCount"
 
 function ItemDetail({detalles}) {

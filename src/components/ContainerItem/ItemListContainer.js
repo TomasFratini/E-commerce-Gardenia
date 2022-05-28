@@ -10,7 +10,6 @@ function ItemListContainer() {
   const {categoriaId} = useParams()
 
   const [productos, setProductos] = useState([])
-  // const [mostrar, setMostrar] = useState(false)
 
   useEffect(() => {
     const db = getFirestore() 
@@ -32,7 +31,8 @@ function ItemListContainer() {
     <div className="">
       <div className="col-span-6 sm:col-span-3">
         {productos.length == 0 ? (
-          <Presentation/>
+         <Presentation/>
+         
           ) : (
           <ItemList products={productos}/> 
             
