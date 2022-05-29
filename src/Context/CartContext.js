@@ -1,3 +1,4 @@
+import { addDoc, collection, getFirestore } from "firebase/firestore"
 import { createContext, useContext, useState } from "react"
 
 
@@ -65,6 +66,40 @@ function CartContextProvider({children}) {
 		return pTotal
 
 	}
+	
+	const [idCompra, setIdCompra] = useState("")
+
+	const armadoCompra = async (datos) => {
+		const productsCompra = cart.map( (p) =>{
+		  return {
+			  id: p.id,
+			  name: p.name,
+			  price: p.precio,
+			  quantity: contar()
+		  }
+		})
+	
+		const compra = {
+		  cliente: [datos],
+		  productos: [...productsCompra],
+		  total: PrecioTotal()
+		}
+
+		delateCart()
+		
+	
+		const db = getFirestore()
+		const comprasColeccion = collection(db, "orders")
+	
+		
+		const respuesta = await addDoc(comprasColeccion, compra)
+		setIdCompra(respuesta.id)
+		console.log(respuesta.id);
+	}	
+
+	// Para pago finalizado
+
+
 
 	return <CartContext.Provider value={{
 			cart,
@@ -73,7 +108,9 @@ function CartContextProvider({children}) {
 			addToCart,
 			delateFromCart,
 			delateCart,
-			setCart
+			setCart,
+			armadoCompra,
+			idCompra
 		}}>{children}</CartContext.Provider>
 			
 		

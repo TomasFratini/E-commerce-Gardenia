@@ -1,43 +1,11 @@
-import { addDoc, collection, getFirestore } from "firebase/firestore"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import { useCartContext } from "../../Context/CartContext"
 
 function Pago() {
 
+  const { contar, PrecioTotal, armadoCompra } = useCartContext()
 
-
-  const { contar, PrecioTotal, cart, delateCart } = useCartContext()
-
-  const [idCompra, setIdCompra] = useState("")
-
-  const armadoCompra = async (datos) => {
-    const productsCompra = cart.map( (p) =>{
-      return {
-          id: p.id,
-          name: p.name,
-          price: p.precio,
-          quantity: contar()
-      }
-    })
-
-    const compra = {
-      cliente: [datos],
-      productos: [...productsCompra],
-      total: PrecioTotal()
-    }
-
-    const db = getFirestore()
-    const comprasColeccion = collection(db, "orders")
-
-    
-      const respuesta = await addDoc(comprasColeccion, compra)
-      setIdCompra(respuesta.id)
-      console.log(respuesta.id);
-      
-  
-    delateCart()
-  }
     
   const [cliente, setCliente] = useState({
     nombre: "",
@@ -61,7 +29,7 @@ function Pago() {
   }
 
   return (
-    <>
+    <div className="min-h-screen">
       <div className="hidden sm:block" aria-hidden="true">
           <div className="py-5">
             <div className="border-t border-gray-200" />
@@ -72,8 +40,8 @@ function Pago() {
           <div className="md:col-span-1">
             <div className="px-4 sm:px-0">
               <h3 className="text-lg font-medium leading-6 text-gray-900">Productos en carrito</h3>
-              <h4 className="mt-1 text-sm text-gray-600">Cantidad de productos añadidos: {contar()}</h4>
-              <h5 className="mt-1 text-sm text-gray-600">Precio total a abonar: ${PrecioTotal()}</h5>
+              <h4 className="mt-1 text-xl text-gray-600">Cantidad de productos añadidos: {contar()}</h4>
+              <h5 className="mt-1 text-xl text-gray-600">Precio total a abonar: ${PrecioTotal()}</h5>
             </div>
         </div>
         <div className="mt-5 md:mt-0 md:col-span-2">
@@ -258,7 +226,7 @@ function Pago() {
         </div>
       </div>
 
-    </>
+    </div>
 
   )
 }

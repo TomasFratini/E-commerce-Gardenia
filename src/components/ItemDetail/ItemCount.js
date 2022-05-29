@@ -1,6 +1,4 @@
 import { useState } from "react"
-import { useAppContext } from "../../Context/AppContext"
-import { useCartContext } from "../../Context/CartContext"
 
 function ItemCount({stock, initial, onAdd}) {
   
@@ -21,19 +19,8 @@ function ItemCount({stock, initial, onAdd}) {
       setSuma(stock)
     }
   }
-
-  /* const handlClick = (id, cantidad, img, name) => {
-    const findProduct = items.find ((producto) => producto.id === id)
-
-    if (!findProduct) {
-        alert("Error")
-        return
-    } */
-
-    // addToCart(findProduct, cantidad)
-    // onAdd(suma)
   
-  
+
   return (
     <>
     <strong>Stock: {stock}</strong>

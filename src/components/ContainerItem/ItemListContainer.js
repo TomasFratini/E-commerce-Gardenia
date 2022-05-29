@@ -21,7 +21,7 @@ function ItemListContainer() {
         snapshot.docs.forEach(s => {
           productList.push( { id: s.id, ...s.data() } )
         });
-        const productsFilter = categoriaId ? (productList.filter (c => c.category == categoriaId)):(productList)
+        const productsFilter = categoriaId ? (productList.filter (c => c.category === categoriaId)):(productList)
 
         setProductos(productsFilter)
       })
@@ -30,7 +30,7 @@ function ItemListContainer() {
   return (
     <div className="">
       <div className="col-span-6 sm:col-span-3">
-        {productos.length == 0 ? (
+        {productos.length === 0 ? (
          <Presentation/>
          
           ) : (

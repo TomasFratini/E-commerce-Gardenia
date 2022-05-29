@@ -3,7 +3,6 @@ import NavBar from './components/NavBar';
 import ItemListContainer from './components/ContainerItem/ItemListContainer';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CartContextProvider from './Context/CartContext';
-import AppContextProvider from './Context/AppContext';
 import Pago from './components/Pago/Pago';
 import Footer from './components/Footer/Footer';
 import PagoFinalizado from './components/Pago/PagoFinalizado';
@@ -15,7 +14,7 @@ import ItemDetailContainer from './components/ItemDetail/ItemDetailContainer';
 function App() {
   return (
 
-    <AppContextProvider>
+   
       <CartContextProvider>
         <BrowserRouter> 
           <NavBar/>
@@ -27,10 +26,10 @@ function App() {
             <Route path='/pago' element={<Pago/>}/>
             <Route path='/finalizado' element={<PagoFinalizado/>}/>
           </Routes>
-          {/* <Footer/> */}
+          <Footer/>
         </BrowserRouter>
       </CartContextProvider>
-    </AppContextProvider>
+    
   );
 }
 
