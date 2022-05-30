@@ -1,16 +1,10 @@
 #  LÉAME.MD
 Creacion de pagina e-commerce sobre productos organicos, puros y esenciales.
-En el mismo se podran adquirir los productos que se muestran.
+En el mismo proximamente se podran adquirir los productos que se muestran.
 
 ##  Contenido
-Productos para la venta al publico...
+*Productos para la venta al publico*
 
-##  demostración
+##  Demostración
+Se puede ver la pagina funcionando aqui [Gardenia](https://e-commerce-react-js-tomasfratini.vercel.app/).
 
-##  Cómo clonar
-
-##  Instalación
-
-##  Vista previa
-
-###  Notas
